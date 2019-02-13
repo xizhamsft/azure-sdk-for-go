@@ -22,7 +22,7 @@ package network
 import (
 	"context"
 
-	original "github.com/Azure/azure-sdk-for-go/services/network/mgmt/2018-11-01/network"
+	original "github.com/Azure/azure-sdk-for-go/services/network/mgmt/2018-12-01/network"
 )
 
 const (
@@ -34,6 +34,14 @@ type Access = original.Access
 const (
 	Allow Access = original.Allow
 	Deny  Access = original.Deny
+)
+
+type Action = original.Action
+
+const (
+	ActionAllow Action = original.ActionAllow
+	ActionBlock Action = original.ActionBlock
+	ActionLog   Action = original.ActionLog
 )
 
 type ApplicationGatewayBackendHealthServerHealth = original.ApplicationGatewayBackendHealthServerHealth
@@ -245,9 +253,9 @@ const (
 type ConnectionMonitorSourceStatus = original.ConnectionMonitorSourceStatus
 
 const (
-	Active   ConnectionMonitorSourceStatus = original.Active
-	Inactive ConnectionMonitorSourceStatus = original.Inactive
-	Uknown   ConnectionMonitorSourceStatus = original.Uknown
+	ConnectionMonitorSourceStatusActive   ConnectionMonitorSourceStatus = original.ConnectionMonitorSourceStatusActive
+	ConnectionMonitorSourceStatusInactive ConnectionMonitorSourceStatus = original.ConnectionMonitorSourceStatusInactive
+	ConnectionMonitorSourceStatusUnknown  ConnectionMonitorSourceStatus = original.ConnectionMonitorSourceStatusUnknown
 )
 
 type ConnectionState = original.ConnectionState
@@ -316,8 +324,8 @@ const (
 type EffectiveRouteState = original.EffectiveRouteState
 
 const (
-	EffectiveRouteStateActive  EffectiveRouteState = original.EffectiveRouteStateActive
-	EffectiveRouteStateInvalid EffectiveRouteState = original.EffectiveRouteStateInvalid
+	Active  EffectiveRouteState = original.Active
+	Invalid EffectiveRouteState = original.Invalid
 )
 
 type EffectiveSecurityRuleProtocol = original.EffectiveSecurityRuleProtocol
@@ -326,6 +334,13 @@ const (
 	EffectiveSecurityRuleProtocolAll EffectiveSecurityRuleProtocol = original.EffectiveSecurityRuleProtocolAll
 	EffectiveSecurityRuleProtocolTCP EffectiveSecurityRuleProtocol = original.EffectiveSecurityRuleProtocolTCP
 	EffectiveSecurityRuleProtocolUDP EffectiveSecurityRuleProtocol = original.EffectiveSecurityRuleProtocolUDP
+)
+
+type EnabledState = original.EnabledState
+
+const (
+	EnabledStateDisabled EnabledState = original.EnabledStateDisabled
+	EnabledStateEnabled  EnabledState = original.EnabledStateEnabled
 )
 
 type EvaluationState = original.EvaluationState
@@ -522,6 +537,26 @@ const (
 	LoadDistributionSourceIPProtocol LoadDistribution = original.LoadDistributionSourceIPProtocol
 )
 
+type MatchVariable = original.MatchVariable
+
+const (
+	PostArgs       MatchVariable = original.PostArgs
+	QueryString    MatchVariable = original.QueryString
+	RemoteAddr     MatchVariable = original.RemoteAddr
+	RequestBody    MatchVariable = original.RequestBody
+	RequestCookies MatchVariable = original.RequestCookies
+	RequestHeaders MatchVariable = original.RequestHeaders
+	RequestMethod  MatchVariable = original.RequestMethod
+	RequestURI     MatchVariable = original.RequestURI
+)
+
+type Mode = original.Mode
+
+const (
+	ModeDetection  Mode = original.ModeDetection
+	ModePrevention Mode = original.ModePrevention
+)
+
 type NextHopType = original.NextHopType
 
 const (
@@ -548,6 +583,21 @@ const (
 	OperationStatusFailed     OperationStatus = original.OperationStatusFailed
 	OperationStatusInProgress OperationStatus = original.OperationStatusInProgress
 	OperationStatusSucceeded  OperationStatus = original.OperationStatusSucceeded
+)
+
+type Operator = original.Operator
+
+const (
+	OperatorBeginsWith         Operator = original.OperatorBeginsWith
+	OperatorContains           Operator = original.OperatorContains
+	OperatorEndsWith           Operator = original.OperatorEndsWith
+	OperatorEqual              Operator = original.OperatorEqual
+	OperatorGreaterThan        Operator = original.OperatorGreaterThan
+	OperatorGreaterThanOrEqual Operator = original.OperatorGreaterThanOrEqual
+	OperatorIPMatch            Operator = original.OperatorIPMatch
+	OperatorLessThan           Operator = original.OperatorLessThan
+	OperatorLessThanOrEqual    Operator = original.OperatorLessThanOrEqual
+	OperatorRegex              Operator = original.OperatorRegex
 )
 
 type Origin = original.Origin
@@ -718,6 +768,17 @@ const (
 	SeverityWarning Severity = original.SeverityWarning
 )
 
+type Transform = original.Transform
+
+const (
+	HTMLEntityDecode Transform = original.HTMLEntityDecode
+	Lowercase        Transform = original.Lowercase
+	RemoveNulls      Transform = original.RemoveNulls
+	Trim             Transform = original.Trim
+	URLDecode        Transform = original.URLDecode
+	URLEncode        Transform = original.URLEncode
+)
+
 type TransportProtocol = original.TransportProtocol
 
 const (
@@ -857,14 +918,22 @@ const (
 	RouteBased  VpnType = original.RouteBased
 )
 
+type WebApplicationFirewallPolicy = original.WebApplicationFirewallPolicy
+
+const (
+	WebApplicationFirewallPolicyCreating  WebApplicationFirewallPolicy = original.WebApplicationFirewallPolicyCreating
+	WebApplicationFirewallPolicyDeleting  WebApplicationFirewallPolicy = original.WebApplicationFirewallPolicyDeleting
+	WebApplicationFirewallPolicyDisabled  WebApplicationFirewallPolicy = original.WebApplicationFirewallPolicyDisabled
+	WebApplicationFirewallPolicyDisabling WebApplicationFirewallPolicy = original.WebApplicationFirewallPolicyDisabling
+	WebApplicationFirewallPolicyEnabled   WebApplicationFirewallPolicy = original.WebApplicationFirewallPolicyEnabled
+	WebApplicationFirewallPolicyEnabling  WebApplicationFirewallPolicy = original.WebApplicationFirewallPolicyEnabling
+)
+
 type AddressSpace = original.AddressSpace
 type ApplicationGateway = original.ApplicationGateway
 type ApplicationGatewayAuthenticationCertificate = original.ApplicationGatewayAuthenticationCertificate
 type ApplicationGatewayAuthenticationCertificatePropertiesFormat = original.ApplicationGatewayAuthenticationCertificatePropertiesFormat
 type ApplicationGatewayAutoscaleConfiguration = original.ApplicationGatewayAutoscaleConfiguration
-type ApplicationGatewayAvailableRequestHeadersResult = original.ApplicationGatewayAvailableRequestHeadersResult
-type ApplicationGatewayAvailableResponseHeadersResult = original.ApplicationGatewayAvailableResponseHeadersResult
-type ApplicationGatewayAvailableServerVariablesResult = original.ApplicationGatewayAvailableServerVariablesResult
 type ApplicationGatewayAvailableSslOptions = original.ApplicationGatewayAvailableSslOptions
 type ApplicationGatewayAvailableSslOptionsPropertiesFormat = original.ApplicationGatewayAvailableSslOptionsPropertiesFormat
 type ApplicationGatewayAvailableSslPredefinedPolicies = original.ApplicationGatewayAvailableSslPredefinedPolicies
@@ -912,6 +981,7 @@ type ApplicationGatewayRequestRoutingRule = original.ApplicationGatewayRequestRo
 type ApplicationGatewayRequestRoutingRulePropertiesFormat = original.ApplicationGatewayRequestRoutingRulePropertiesFormat
 type ApplicationGatewayRewriteRule = original.ApplicationGatewayRewriteRule
 type ApplicationGatewayRewriteRuleActionSet = original.ApplicationGatewayRewriteRuleActionSet
+type ApplicationGatewayRewriteRuleCondition = original.ApplicationGatewayRewriteRuleCondition
 type ApplicationGatewayRewriteRuleSet = original.ApplicationGatewayRewriteRuleSet
 type ApplicationGatewayRewriteRuleSetPropertiesFormat = original.ApplicationGatewayRewriteRuleSetPropertiesFormat
 type ApplicationGatewaySku = original.ApplicationGatewaySku
@@ -1041,6 +1111,8 @@ type ContainerNetworkInterfaceConfigurationPropertiesFormat = original.Container
 type ContainerNetworkInterfaceIPConfiguration = original.ContainerNetworkInterfaceIPConfiguration
 type ContainerNetworkInterfaceIPConfigurationPropertiesFormat = original.ContainerNetworkInterfaceIPConfigurationPropertiesFormat
 type ContainerNetworkInterfacePropertiesFormat = original.ContainerNetworkInterfacePropertiesFormat
+type CustomRule = original.CustomRule
+type CustomRules = original.CustomRules
 type DNSNameAvailabilityResult = original.DNSNameAvailabilityResult
 type DdosCustomPoliciesClient = original.DdosCustomPoliciesClient
 type DdosCustomPoliciesCreateOrUpdateFuture = original.DdosCustomPoliciesCreateOrUpdateFuture
@@ -1216,6 +1288,8 @@ type InboundNatRulePropertiesFormat = original.InboundNatRulePropertiesFormat
 type InboundNatRulesClient = original.InboundNatRulesClient
 type InboundNatRulesCreateOrUpdateFuture = original.InboundNatRulesCreateOrUpdateFuture
 type InboundNatRulesDeleteFuture = original.InboundNatRulesDeleteFuture
+type IntentPolicy = original.IntentPolicy
+type IntentPolicyConfiguration = original.IntentPolicyConfiguration
 type Interface = original.Interface
 type InterfaceAssociation = original.InterfaceAssociation
 type InterfaceDNSSettings = original.InterfaceDNSSettings
@@ -1266,6 +1340,7 @@ type ListP2SVpnGatewaysResultPage = original.ListP2SVpnGatewaysResultPage
 type ListP2SVpnServerConfigurationsResult = original.ListP2SVpnServerConfigurationsResult
 type ListP2SVpnServerConfigurationsResultIterator = original.ListP2SVpnServerConfigurationsResultIterator
 type ListP2SVpnServerConfigurationsResultPage = original.ListP2SVpnServerConfigurationsResultPage
+type ListString = original.ListString
 type ListVirtualHubsResult = original.ListVirtualHubsResult
 type ListVirtualHubsResultIterator = original.ListVirtualHubsResultIterator
 type ListVirtualHubsResultPage = original.ListVirtualHubsResultPage
@@ -1326,6 +1401,8 @@ type LocalNetworkGatewaysUpdateTagsFuture = original.LocalNetworkGatewaysUpdateT
 type LogSpecification = original.LogSpecification
 type ManagedServiceIdentity = original.ManagedServiceIdentity
 type ManagedServiceIdentityUserAssignedIdentitiesValue = original.ManagedServiceIdentityUserAssignedIdentitiesValue
+type MatchCondition = original.MatchCondition
+type MatchVariable1 = original.MatchVariable1
 type MatchedRule = original.MatchedRule
 type MetricSpecification = original.MetricSpecification
 type NextHopParameters = original.NextHopParameters
@@ -1376,6 +1453,8 @@ type PacketCapturesGetStatusFuture = original.PacketCapturesGetStatusFuture
 type PacketCapturesStopFuture = original.PacketCapturesStopFuture
 type PatchRouteFilter = original.PatchRouteFilter
 type PatchRouteFilterRule = original.PatchRouteFilterRule
+type PolicySettings = original.PolicySettings
+type PrepareNetworkPoliciesRequest = original.PrepareNetworkPoliciesRequest
 type Probe = original.Probe
 type ProbePropertiesFormat = original.ProbePropertiesFormat
 type Profile = original.Profile
@@ -1503,6 +1582,7 @@ type SubnetPropertiesFormat = original.SubnetPropertiesFormat
 type SubnetsClient = original.SubnetsClient
 type SubnetsCreateOrUpdateFuture = original.SubnetsCreateOrUpdateFuture
 type SubnetsDeleteFuture = original.SubnetsDeleteFuture
+type SubnetsPrepareNetworkPoliciesFuture = original.SubnetsPrepareNetworkPoliciesFuture
 type TagsObject = original.TagsObject
 type Topology = original.Topology
 type TopologyAssociation = original.TopologyAssociation
@@ -1657,6 +1737,8 @@ type WatchersGetVMSecurityRulesFuture = original.WatchersGetVMSecurityRulesFutur
 type WatchersListAvailableProvidersFuture = original.WatchersListAvailableProvidersFuture
 type WatchersSetFlowLogConfigurationFuture = original.WatchersSetFlowLogConfigurationFuture
 type WatchersVerifyIPFlowFuture = original.WatchersVerifyIPFlowFuture
+type WebApplicationFirewallPolicy1 = original.WebApplicationFirewallPolicy1
+type WebApplicationFirewallPolicyPropertiesFormat = original.WebApplicationFirewallPolicyPropertiesFormat
 
 func New(subscriptionID string) BaseClient {
 	return original.New(subscriptionID)
@@ -2441,6 +2523,9 @@ func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
 func PossibleAccessValues() []Access {
 	return original.PossibleAccessValues()
 }
+func PossibleActionValues() []Action {
+	return original.PossibleActionValues()
+}
 func PossibleApplicationGatewayBackendHealthServerHealthValues() []ApplicationGatewayBackendHealthServerHealth {
 	return original.PossibleApplicationGatewayBackendHealthServerHealthValues()
 }
@@ -2540,6 +2625,9 @@ func PossibleEffectiveRouteStateValues() []EffectiveRouteState {
 func PossibleEffectiveSecurityRuleProtocolValues() []EffectiveSecurityRuleProtocol {
 	return original.PossibleEffectiveSecurityRuleProtocolValues()
 }
+func PossibleEnabledStateValues() []EnabledState {
+	return original.PossibleEnabledStateValues()
+}
 func PossibleEvaluationStateValues() []EvaluationState {
 	return original.PossibleEvaluationStateValues()
 }
@@ -2609,6 +2697,12 @@ func PossibleLoadBalancerSkuNameValues() []LoadBalancerSkuName {
 func PossibleLoadDistributionValues() []LoadDistribution {
 	return original.PossibleLoadDistributionValues()
 }
+func PossibleMatchVariableValues() []MatchVariable {
+	return original.PossibleMatchVariableValues()
+}
+func PossibleModeValues() []Mode {
+	return original.PossibleModeValues()
+}
 func PossibleNextHopTypeValues() []NextHopType {
 	return original.PossibleNextHopTypeValues()
 }
@@ -2617,6 +2711,9 @@ func PossibleOfficeTrafficCategoryValues() []OfficeTrafficCategory {
 }
 func PossibleOperationStatusValues() []OperationStatus {
 	return original.PossibleOperationStatusValues()
+}
+func PossibleOperatorValues() []Operator {
+	return original.PossibleOperatorValues()
 }
 func PossibleOriginValues() []Origin {
 	return original.PossibleOriginValues()
@@ -2678,6 +2775,9 @@ func PossibleServiceProviderProvisioningStateValues() []ServiceProviderProvision
 func PossibleSeverityValues() []Severity {
 	return original.PossibleSeverityValues()
 }
+func PossibleTransformValues() []Transform {
+	return original.PossibleTransformValues()
+}
 func PossibleTransportProtocolValues() []TransportProtocol {
 	return original.PossibleTransportProtocolValues()
 }
@@ -2722,6 +2822,9 @@ func PossibleVpnGatewayTunnelingProtocolValues() []VpnGatewayTunnelingProtocol {
 }
 func PossibleVpnTypeValues() []VpnType {
 	return original.PossibleVpnTypeValues()
+}
+func PossibleWebApplicationFirewallPolicyValues() []WebApplicationFirewallPolicy {
+	return original.PossibleWebApplicationFirewallPolicyValues()
 }
 func UserAgent() string {
 	return original.UserAgent() + " profiles/preview"
